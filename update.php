@@ -19,6 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Editar Tarefa</title>
+</head>
+<body>
 
 <h2>Editar Medicamento</h2>
 
@@ -51,3 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 
 <a href="read.php">Voltar à lista</a>
+
+</body>
+</html>

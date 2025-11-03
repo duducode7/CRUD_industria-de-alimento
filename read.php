@@ -3,13 +3,19 @@ include 'db.php';
 
 $nome = $_GET['nome'] ?? '';
 
-// Buscar tarefas junto com o nome do usuário
 $sql = "SELECT t.*, u.nome_usuario FROM tarefas t LEFT JOIN usuarios u ON t.fk_usuario = u.id_usuario WHERE 1=1";
 if ($nome) $sql .= " AND t.descricao LIKE '%".$conn->real_escape_string($nome)."%'";
-
 $result = $conn->query($sql);
 ?>
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
 <h2>Lista de Tarefas</h2>
 
 <table border="1" cellpadding="5">
@@ -38,6 +44,8 @@ $result = $conn->query($sql);
     <?php endwhile; ?>
 </table>
 <br>
-<a href="create.php">Cadastrar novo medicamento</a>
+<a class=final href="create.php">Cadastrar novo medicamento</a>
 <br><br>
-<a href="index.php">Voltar ao menu principal</a>
+<a class=final href="index.php">Voltar ao menu principal</a>
+</body>
+</html>

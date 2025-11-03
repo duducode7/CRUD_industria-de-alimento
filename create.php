@@ -19,7 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 } 
 ?>
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastrar Tarefa</title>
+</head>
+<body>
 <h2>Cadastrar tarefa</h2>
 <form method="post">
     Descrição: <input type="text" name="descricao" required><br>
@@ -48,4 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button type="submit">Cadastrar</button>
 </form>
-<a href="index.php">Voltar à lista</a>
+<a class=final href="index.php">Voltar à lista</a>
+</body>
+</html>
