@@ -33,14 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Descrição: <input type="text" name="descricao" required><br>
     Setor: <input type="text" name="setor" required><br>
     Prioridade: <select name="prioridade" required>
-        <option value=“” disabled></option>
+        <option value="" disabled selected>Selecione a Prioridade</option>
         <option value="Baixa">Baixa</option>
         <option value="Media">Média</option>
         <option value=“Alta”>Alta</option>
     </select>
     <br>
     Status: <select name="status" required>
-        <option value="" disabled></option>
+        <option value="" disabled selected>Selecione o Status</option>
         <option value="A fazer">A fazer</option>
         <option value="Em andamento">Em andamento</option>
         <option value=“Concluido”>Concluído</option>
@@ -48,6 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <br>
     Usuário:
     <select name="nome_usuario">
+        <option value="" disabled selected>Selecione o Usuário</option>
         <?php while($u = $usuario -> fetch_assoc()): ?>
             <option value="<?= $u['id_usuario'] ?>"><?= htmlspecialchars($u['nome_usuario']) ?></option>
         <?php endwhile ?>;

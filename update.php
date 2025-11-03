@@ -38,14 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Setor: <input type="text" name="setor" value="<?= htmlspecialchars($tarefa['setor']) ?>" required><br>
     Prioridade:
     <select name="prioridade" required>
-        <option value="" disabled></option>
         <option value="Baixa" <?= $tarefa['prioridade'] == 'Baixa' ? 'selected' : '' ?>>Baixa</option>
         <option value="media" <?= $tarefa['prioridade'] == 'media' ? 'selected' : '' ?>>Média</option>
         <option value="alta" <?= $tarefa['prioridade'] == 'alta' ? 'selected' : '' ?>>Alta</option>
     </select><br>
     Status:
     <select name="status" required>
-        <option value="" disabled></option>
         <option value="fazer" <?= $tarefa['status'] == 'fazer' ? 'selected' : '' ?>>A fazer</option>
         <option value="andamento" <?= $tarefa['status'] == 'andamento' ? 'selected' : '' ?>>Em andamento</option>
         <option value="concluido" <?= $tarefa['status'] == 'concluido' ? 'selected' : '' ?>>Concluído</option>
