@@ -49,12 +49,36 @@ if (!isset($_SESSION["id_usuario"])): ?>
 <?php exit; endif; ?>
 
 <?php
+
 if (isset($_GET['logout'])) {
     session_destroy();
     header("Location: index.php");
     exit;
 }
+
+function getZenQuotePT() {
+    $url = "https://zenquotes.io/api/random";
+    $response = @file_get_contents($url);
+    $data = json_decode($response, true);
+
+    if (!isset($data[0]['q'])) {
+        return ["q" => "Não foi possível carregar a frase no momento.", "a" => ""];
+    }
+    $quote_en = $data[0]['q'];
+    $author = $data[0]['a'];
+
+    $traduzir_url = "https://api.mymemory.translated.net/get?q=" . urlencode($quote_en) . "&langpair=en|pt";
+    $traducao_json = @file_get_contents($traduzir_url);
+    $traducao = json_decode($traducao_json, true);
+    $quote_pt = $traducao['responseData']['translatedText'] ?? $quote_en;
+
+    return ["q" => $quote_pt, "a" => $author];
+}
+
+
+$quote = getZenQuotePT();
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -66,6 +90,13 @@ if (isset($_GET['logout'])) {
 <body>
     <div class="card">
         <h2>Bem-vindo!</h2>
+
+        <!-- 🔹 Frase Motivacional -->
+        <div class="quote" style="text-align:center; margin:20px 0; color:#444;">
+            <blockquote style="font-style:italic;">"<?= htmlspecialchars($quote['q']) ?>"</blockquote>
+            <small>— <?= htmlspecialchars($quote['a']) ?></small>
+        </div>
+
         <form method="get">
             <a href="create_usuario.php">Adicionar Usuário</a>
             <br><br>
